@@ -10,28 +10,19 @@
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu" crossorigin="anonymous"></script>
-    <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container">
-                <a class="navbar-brand" href="#">Spring Advanced</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">게시물 수정</a>
-                        </li>
-                    </ul>
-                    <div class="d-flex gap-3 align-items-center">
-                        <p class="mb-0 text-secondary text-opacity-75">로그인이 필요합니다</p>
-                        <button class="btn btn-outline-success" th:onclick="|location.href='@{signin}'|">로그인</button>
-                        <button class="btn btn-outline-success" th:onclick="|location.href='@{signup}'|">회원가입</button>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script th:if="${isRegist ne null}">
+        window.onload = () => {
+            Swal.fire({
+                title: "회원가입 성공",
+                text: "로그인해볼까요?",
+                icon: "success",
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+    </script>
+    <header th:replace="~{fragments/header :: header(true)}"></header>
     <main>
         <div class="container">
             <section class="mt-5">

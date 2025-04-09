@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <header th:fragment="header(loginVisible)">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container">
+                <a class="navbar-brand" href="/">Spring Advanced</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div th:if="${loginVisible}" class="collapse navbar-collapse" id="navbarSupportedContent" style="width: fit-content; flex-grow: 0">
+                    <div th:if="${username}" class="d-flex gap-3 align-items-center">
+                        <p class="mb-0 text-secondary text-opacity-75"><span th:text="${username}"></span> 님, 반갑습니다!</p>
+                        <button class="btn btn-outline-success" th:onclick="|location.href='@{logout}'|">로그아웃</button>
+                    </div>
+                    <div th:unless="${username}" class="d-flex gap-3 align-items-center">
+                        <p class="mb-0 text-secondary text-opacity-75">로그인이 필요합니다</p>
+                        <button class="btn btn-outline-success" th:onclick="|location.href='@{signin}'|">로그인</button>
+                        <button class="btn btn-outline-success" th:onclick="|location.href='@{signup}'|">회원가입</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+</body>
+</html>
