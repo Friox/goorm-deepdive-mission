@@ -36,8 +36,13 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public boolean supports(Class<?> authentication) {
-        // 해당 Provider가 어떤 종류의 Authentication 객체를 처리할 수 있는지 판단하는 메서드
-        // equals 대신 isAssignableFrom 을 사용하는것이 더 좋다고 한다.
+        /*
+        * 해당 Provider가 어떤 종류의 Authentication 객체를 처리할 수 있는지 판단하는 메서드
+        * equals 대신 isAssignableFrom 을 사용하는것이 더 좋다고 한다.
+        * 무엇보다 클래스 간의 상속 관계를 고려한 비교가 가능한것이 큰 장점이다.
+        * Spring Security에서 권장하는 표준 구현 방식이기도 하다.
+        * equals와 달리 인증의 유연성을 챙길 수 있다.
+        * */
         // return authentication.equals(UsernamePasswordAuthenticationToken.class);
         return UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication);
     }
