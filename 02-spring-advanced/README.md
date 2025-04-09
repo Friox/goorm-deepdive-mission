@@ -3,6 +3,7 @@
 ## 📝 요약
 * Bootstrap을 이용하여 간단한 게시판 UI를 구현
 * Spring Security를 적용, 이메일과 비밀번호로 인증
+* 학습을 위해 `lombok` 라이브러리를 사용하지 않고 대부분의 패턴을 직접 구현
 * 인증 과정을 살펴보기 위해 `formLogin`을 사용하지 않고 직접 구현
 * 테스트를 위해 H2 In-memory DB 사용
 * 공통된 HTML 요소를 Thymeleaf 기능을 이용하여 분리 (fragment)
