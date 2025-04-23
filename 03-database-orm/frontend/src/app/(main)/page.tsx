@@ -1,7 +1,7 @@
 import { Container, Stack, Heading, Table, Icon, Text, Stat } from "@chakra-ui/react";
 import { FaKey } from "react-icons/fa";
 
-type BookData = {
+export type BookData = {
   isbn: string,
   title: string,
   author: string,
