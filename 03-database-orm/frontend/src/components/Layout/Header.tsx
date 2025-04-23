@@ -1,7 +1,7 @@
 'use client'
 
-import React, { MouseEventHandler, useState } from 'react'
-import { Box, Container, HStack, Heading, Button, Link as ChakraLink, SystemStyleObject, Avatar, AvatarGroup, Menu, Portal, Text, Stack, Icon } from '@chakra-ui/react'
+import React, { useState } from 'react'
+import { Box, Container, HStack, Heading, Button, Flex, Link as ChakraLink, SystemStyleObject, Avatar, AvatarGroup, Menu, Portal, Text, Stack, Icon } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { FaSignOutAlt } from "react-icons/fa";
 
@@ -22,7 +22,7 @@ export type HeaderLinkProps = {
 
 const Header: React.FC = () => {
 
-  const [ isLogined, setLogined ] = useState(false)
+  const [ isLogined, setLogined ] = useState(true)
 
   const userLinks: HeaderLinkProps[] = [
     { name: '도서 조회', target: '/book/find' }
@@ -30,13 +30,14 @@ const Header: React.FC = () => {
 
   const adminLinks: HeaderLinkProps[] = [
     { name: '도서 관리', target: '/book/manage' },
-    { name: '대출 관리', target: '/loan/manage' },
+    { name: '대출 관리', target: '/checkout/manage' },
+    { name: '도서 목록', target: '/book/list' },
   ]
 
   let role = 'ADMIN'
 
   return (
-    <Box borderBottomWidth='1px' paddingBlock='4'>
+    <Flex borderBottomWidth='1px' paddingBlock='4' height='80px' alignItems='center'>
       <Container>
         <HStack justifyContent='space-between'>
           <HStack gap='8'>
@@ -67,9 +68,12 @@ const Header: React.FC = () => {
           <HStack gap='4'>
             {isLogined ? (
               <>
-                <Stack direction='row' alignItems='baseline'>
-                  <Text fontSize='sm'>{role === 'USER' ? '일반' : '관리자'}</Text>
-                  <Text>이승훈</Text>
+                <Stack alignItems='end' gap='0'>
+                  <Stack direction='row' alignItems='baseline'>
+                    <Text fontSize='sm'>{role === 'USER' ? '일반' : '관리자'}</Text>
+                    <Text>이승훈</Text>
+                  </Stack>
+                  <Text fontSize='sm' color='fg.muted'>devfriox@gmail.com</Text>
                 </Stack>
                 <Menu.Root>
                   <Menu.Trigger asChild>
@@ -106,7 +110,7 @@ const Header: React.FC = () => {
           </HStack>
         </HStack>
       </Container>
-    </Box>
+    </Flex>
   )
 }
 
