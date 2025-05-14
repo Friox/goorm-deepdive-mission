@@ -20,9 +20,6 @@ spring:
     init:
       mode: always
 
-  jwt:
-    secret: 405fcfca6a5856531ed90fce769cf4a3b1027c757b2d7eeb352521115b7ce707
-
 mybatis:
   mapper-locations: mappers/*.xml
   configuration:
