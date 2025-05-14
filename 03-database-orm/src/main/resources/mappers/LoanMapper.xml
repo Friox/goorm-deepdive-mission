@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dev.friox.database.persistence.mybatis.mapper.LoanMapper">
+    <select id="selectById" resultType="dev.friox.database.persistence.jpa.entity.Loan">
+        SELECT *
+        FROM loan
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectDetailById" resultType="dev.friox.database.model.dto.response.LoanResponseDto">
+        SELECT
+            l.id AS loan_id,
+            u.id AS user_id,
+            u.realname AS user_realname,
+            b.id AS book_id,
+            b.title AS book_title,
+            l.start_date,
+            l.end_date,
+            l.return_date
+        FROM loan l
+            JOIN books b ON l.book_id = b.id
+            JOIN users u ON l.user_id = u.id
+        WHERE l.id = #{id}
+    </select>
+
+    <select id="selectDetailsByUserRealname" resultType="dev.friox.database.model.dto.response.LoanResponseDto">
+        SELECT
+            l.id AS loan_id,
+            u.id AS user_id,
+            u.realname AS user_realname,
+            b.id AS book_id,
+            b.title AS book_title,
+            l.start_date,
+            l.end_date,
+            l.return_date
+        FROM loan l
+                 JOIN books b ON l.book_id = b.id
+                 JOIN users u ON l.user_id = u.id
+        WHERE u.realname = #{realname}
+    </select>
+
+    <select id="selectDetailsByBookTitle" resultType="dev.friox.database.model.dto.response.LoanResponseDto">
+        SELECT
+            l.id AS loan_id,
+            u.id AS user_id,
+            u.realname AS user_realname,
+            b.id AS book_id,
+            b.title AS book_title,
+            l.start_date,
+            l.end_date,
+            l.return_date
+        FROM loan l
+        JOIN books b ON l.book_id = b.id
+        JOIN users u ON l.user_id = u.id
+        WHERE b.title = #{title}
+    </select>
+
+    <insert id="insertLoan" parameterType="dev.friox.database.model.dto.LoanInsertDto"
+            useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO loan(user_id, book_id, start_date, end_date)
+        VALUES (#{userId}, #{bookId}, #{startDate}, #{endDate})
+    </insert>
+
+    <update id="updateEndDate">
+        UPDATE loan
+        SET end_date = #{newEndDate}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE
+        FROM loan
+        WHERE id = #{id}
+    </delete>
+</mapper>
