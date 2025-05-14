@@ -25,3 +25,7 @@ DB_NAME=<DB 이름>
 DB_USERNAME=<SQL 사용자 이름>
 DB_PASSWORD=<SQL 사용자 비밀번호>
 ```
+
+## Swagger
+* Swagger가 구현되어 있습니다.
+* http://localhost:8080/swagger-ui/index.html#/ 로 접속하시면 됩니다.
