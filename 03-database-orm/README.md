@@ -26,6 +26,6 @@ DB_USERNAME=<SQL 사용자 이름>
 DB_PASSWORD=<SQL 사용자 비밀번호>
 ```
 
-## Swagger
-* Swagger가 구현되어 있습니다.
-* http://localhost:8080/swagger-ui/index.html#/ 로 접속하시면 됩니다.
+## 추가
+* Swagger가 구현되어 있습니다. http://localhost:8080/swagger-ui/index.html#/ 로 접속하시면 됩니다.
+* 도서 데이터는 교보문고 도서목록 다운로드 기능을 활용했습니다.
